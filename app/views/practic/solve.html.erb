@@ -1,8 +1,10 @@
 <p>
   <b>Ejercicio:</b>
+
   <%= @exercise.name %>
   <br>
-  <%= @exercise.content %> <br>
+    
+  <%= raw(@exercise.content.to_s.gsub(/\n/, '<br/>')) %> <br>
 </p>
 <p>
   <b>Puntos:</b>

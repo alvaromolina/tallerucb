@@ -100,4 +100,21 @@ class PracticController < ApplicationController
 
                                
   end
+  
+  def report
+    @users = User.find(:all,
+                       :joins =>"LEFT JOIN solutions ON solutions.user_id = users.id",
+                       :select => "users.*, count( solutions.exercise_id) sol, sum(solutions.points) points ",
+                       :order => "points desc, users.name",
+                       :group => 'users.id')
+  end
+  
+  def report2
+    @users = User.find(:all,
+                       :joins =>"LEFT JOIN solutions ON solutions.user_id = users.id "+
+                       "LEFT JOIN exercises ON exercises.id = solutions.exercise_id",
+                       :select => "users.*, solutions.points, solutions.id AS solutions_id, solutions.file_file_name, exercises.number, exercises.name AS exercise_name ",
+                       :order => "users.name, exercises.number")
+  end
+  
 end

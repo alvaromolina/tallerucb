@@ -10,6 +10,10 @@ Tallerucb::Application.routes.draw do
   get "practic/" => "practic#index"
   
   post "practic/save"
+  
+  get "practic/report"
+  
+  get "practic/report2"
 
   resources :practices
 
