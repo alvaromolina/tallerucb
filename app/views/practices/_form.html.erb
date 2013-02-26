@@ -1,0 +1,13 @@
+<%= form_for @practice do |f| %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <%= f.label :number, "Numero" %><br />
+  <%= f.number_field :number %><br />
+  
+  <%= f.fields_for :exercises do |builder| %>
+    <%= render "exercises_fields", :f => builder %>
+  <% end %>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

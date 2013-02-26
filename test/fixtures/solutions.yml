@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id_exercise: 
+  user_id: 
+  points: 
+  result: MyText
+
+two:
+  id_exercise: 
+  user_id: 
+  points: 
+  result: MyText

@@ -1,0 +1,19 @@
+<h1>Listing practices</h1>
+
+<table>
+  <tr>
+    <th>Practica</th>
+    <th>Puntos</th>
+    <th></th>
+  </tr>
+
+<% @practices.each do |practice| %>
+  <tr>
+    <td><%= practice.name %></td>
+    <td><%= practice.points %></td>
+    <td><%= link_to 'Show', 'practic/show/'+practice.id.to_s %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
