@@ -6,6 +6,7 @@
     <th>Email</th>
     <th>Soluciones</th>
     <th>Puntos</th>
+    <th>Detail</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -14,7 +15,10 @@
     <td><%= user.email %></td>
     <td><%= user.sol %></td>
     <td><%= user.points %></td>
+    <td> <%= link_to 'detalle', '/practic/report2/'+user.id.to_s %></td>
   </tr>
 <% end %>
 </table>
 <br />
+
+<% link_to 'atras','/practic/report' %>

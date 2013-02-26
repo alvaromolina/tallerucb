@@ -15,6 +15,8 @@ Tallerucb::Application.routes.draw do
   
   get "practic/report2"
 
+  get "practic/report2/:user_id" => "practic#report2"
+
   resources :practices
 
 
