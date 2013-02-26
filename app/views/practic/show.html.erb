@@ -2,9 +2,6 @@
 <table class="table table-striped">
   <tr>
   <th>
-    Numero
-  </th>
-  <th>
     Ejercicio
   </th>
   <th>
@@ -16,7 +13,6 @@
   </tr>
 <% @exercises.each do |exercise| %>
   <tr>
-    <td><%= exercise.id %></td>
     <td><%= exercise.name %></td>
     <td><%= exercise.points %></td>
     <td><%= link_to 'Resolver', '/practic/solve/'+exercise.id.to_s %></td>
