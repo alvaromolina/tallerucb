@@ -24,4 +24,4 @@ pickle-email-*.html
 .project
 /lib/rag/
 /lib/rag/*
-*.komodoproject
+*.komodoprojectx

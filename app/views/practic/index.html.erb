@@ -1,6 +1,6 @@
-<h1>Listing practices</h1>
+<h1>Practicas</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Practica</th>
     <th>Puntos</th>
@@ -11,7 +11,7 @@
   <tr>
     <td><%= practice.name %></td>
     <td><%= practice.points %></td>
-    <td><%= link_to 'Show', 'practic/show/'+practice.id.to_s %></td>
+    <td><%= link_to 'Mostrar', '/practic/show/'+practice.id.to_s %></td>
   </tr>
 <% end %>
 </table>
