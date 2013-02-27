@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   has_many :solutions, :dependent => :destroy
   
   def admin?
-    true
+    role == 'admin'
   end
 end
