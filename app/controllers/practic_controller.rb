@@ -122,7 +122,7 @@ class PracticController < ApplicationController
     @users = User.find(:all,
                        :joins =>"LEFT JOIN solutions ON solutions.user_id = users.id "+
                        "LEFT JOIN exercises ON exercises.id = solutions.exercise_id",
-                       :select => "users.*, solutions.points, solutions.id AS solutions_id, solutions.file_file_name, exercises.number, exercises.name AS exercise_name ",
+                       :select => "users.*, solutions.points, solutions.id AS solutions_id, solutions.file_file_name, solutions.result, exercises.number, exercises.name AS exercise_name ",
                        :conditions => condition,
                        :order => "users.name, exercises.number")
   end

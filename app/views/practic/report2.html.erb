@@ -1,3 +1,5 @@
+
+
 <h1>Practicas</h1>
 
 <table class="table table-striped">
@@ -7,6 +9,8 @@
     <th>Ejercicio</th>
     <th>Puntos</th>
     <th>Archivo</th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @users.each do |user| %>
@@ -18,6 +22,8 @@
     <td><%= link_to user.file_file_name ? user.file_file_name.to_s : '' , '/assets/solutions/' +
     ((user.solutions_id) ? user.solutions_id.to_s : 'NA' ) +
     '/original/' + user.file_file_name.to_s %>
+    <td><button type="button" class="btn btn-primary toggle" id="<%= user.solutions_id %>" data-toggle="button">Resultado</button></td>
+    <td><div id="result_<%= user.solutions_id %>" style="display: none;"><%= user.result%></div></td>
 
     </td>
 
@@ -26,3 +32,14 @@
 </table>
 <br />
 <%= link_to 'atras','/practic/report' %>
+
+<script>
+  
+  $(document).ready(function($) {
+    $(".toggle").click(function(){
+       var id = this.id;
+        $("#result_"+id).toggle();
+    });
+  }); //d
+
+</script>
