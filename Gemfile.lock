@@ -35,6 +35,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bluff (0.1.0)
     builder (3.0.4)
+    cancan (1.6.9)
     chronic (0.9.0)
     churn (0.0.28)
       chronic (>= 0.2.3)
@@ -243,6 +244,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
+  cancan
   coffee-rails (~> 3.2.1)
   debugger
   devise

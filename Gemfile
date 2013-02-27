@@ -15,6 +15,7 @@ gem 'term-ansicolor'
 gem 'twitter-bootstrap-rails'
 gem 'debugger'
 gem 'ZenTest'
+gem "cancan"
 
 # Gems used only for assets and not required
 # in production environments by default.

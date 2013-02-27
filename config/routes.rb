@@ -20,7 +20,10 @@ Tallerucb::Application.routes.draw do
   resources :practices
 
 
+
   devise_for :users
+  
+  resources :users
 
   root :to => 'practic#index'
   # The priority is based upon order of creation:
