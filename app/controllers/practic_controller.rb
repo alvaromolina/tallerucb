@@ -46,36 +46,41 @@ class PracticController < ApplicationController
     @exercise = Exercise.find(params[:solution][:exercise_id])
     
     
+    if(Time.zone.now <= Time.new(2013,2,28,23,59,59,'-04:00'))
 
-
-    if (params[:solution][:id]!="")
-      @solution = Solution.find(params[:solution][:id])
-      
-      if @solution.update_attributes(params[:solution])
+      if (params[:solution][:id]!="")
+        @solution = Solution.find(params[:solution][:id])
         
-        params[:solution][:result], params[:solution][:points] = grade(@exercise.number, @solution.id, @solution.file_file_name)
         if @solution.update_attributes(params[:solution])
-          flash[:notice] = 'Solution was successfully updated.'
-          redirect_to :action => "solve", :id => @solution.exercise_id
+          
+          params[:solution][:result], params[:solution][:points] = grade(@exercise.number, @solution.id, @solution.file_file_name)
+          if @solution.update_attributes(params[:solution])
+            flash[:notice] = 'Solution was successfully updated.'
+            redirect_to :action => "solve", :id => @solution.exercise_id
+          else
+            render action: "solve"
+          end
         else
           render action: "solve"
         end
       else
-        render action: "solve"
-      end
-    else
-      @solution = Solution.new(params[:solution])
-      if (@solution.save)
-        @solution.result, @solution.points = grade(@exercise.number, @solution.id, @solution.file_file_name)
+        @solution = Solution.new(params[:solution])
         if (@solution.save)
-          flash[:notice] = 'Solution was successfully created.'
-          redirect_to :action => "solve", :id => @solution.exercise_id
+          @solution.result, @solution.points = grade(@exercise.number, @solution.id, @solution.file_file_name)
+          if (@solution.save)
+            flash[:notice] = 'Solution was successfully created.'
+            redirect_to :action => "solve", :id => @solution.exercise_id
+          else
+            render action: "solve"
+          end
         else
           render action: "solve"
         end
-      else
-        render action: "solve"
       end
+    
+    else
+      flash[:notice] = 'Tiempo expiro para subir soluciones'
+      redirect_to :action => "solve", :id => @exercise.id
     end
     
   end
