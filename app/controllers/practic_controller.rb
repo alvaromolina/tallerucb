@@ -46,10 +46,7 @@ class PracticController < ApplicationController
     @exercise = Exercise.find(params[:solution][:exercise_id])
     
     
-    if(Time.zone.now <= Time.new(2013,2,28,23,59,59,'-04:00'))
-      flash[:notice] = 'Tiempo expiro para subir soluciones'
-      redirect_to :action => "solve", :id => @exercise.id
-    end
+
 
     if (params[:solution][:id]!="")
       @solution = Solution.find(params[:solution][:id])
