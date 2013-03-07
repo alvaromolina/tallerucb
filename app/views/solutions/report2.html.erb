@@ -1,0 +1,45 @@
+
+
+<h1>Practicas</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Usuario</th>
+    <th>Email</th>
+    <th>Ejercicio</th>
+    <th>Puntos</th>
+    <th>Archivo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.exercise_name %></td>
+    <td><%= user.points %></td>
+    <td><%= link_to user.file_file_name ? user.file_file_name.to_s : '' , '/assets/solutions/' +
+    ((user.solutions_id) ? user.solutions_id.to_s : 'NA' ) +
+    '/original/' + user.file_file_name.to_s %>
+    <td><button type="button" class="btn btn-primary toggle" id="<%= user.solutions_id %>" data-toggle="button">Resultado</button></td>
+    <td><div id="result_<%= user.solutions_id %>" style="display: none;"><%= user.result%></div></td>
+    <td><%= link_to 'comentar', new_comments_solution_path + '/' + user.solutions_id.to_s  %></td>
+
+    </td>
+
+  </tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'atras','/practic/report' %>
+
+<script>
+  $(document).ready(function($) {
+    $(".toggle").click(function(){
+       var id = this.id;
+        $("#result_"+id).toggle();
+    });
+  });
+</script>

@@ -6,6 +6,11 @@
   <%= f.label :number, "Numero" %><br />
   <%= f.number_field :number %><br />
   
+  
+  <%= f.label :due_date_string, "Due Date" %><br />
+
+  <%= f.text_field :due_date_string %>
+
   <%= f.fields_for :exercises do |builder| %>
     <%= render "exercises_fields", :f => builder %>
   <% end %>

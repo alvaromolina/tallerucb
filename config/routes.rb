@@ -1,31 +1,26 @@
 Tallerucb::Application.routes.draw do
   
+  get "comments_solutions/new/:solution_id" => "comments_solutions#new"
+  resources :comments_solutions
   
-  get "practic/show/:id"=>"practic#show"
-
-  get "practic/index"
   
-  get "practic/solve/:id" => "practic#solve"
-
-  get "practic/" => "practic#index"
-  
-  post "practic/save"
-  
-  get "practic/report"
-  
-  get "practic/report2"
-
-  get "practic/report2/:user_id" => "practic#report2"
-
+  get "practices/solve" => "practices#solve"
   resources :practices
 
+  get "exercises/solve/:id" => "exercises#solve"
+  resources :exercises
 
+  get "solutions/report"
+  get "solutions/report2"
+  get "solutions/report2/:user_id" => "solutions#report2"
+  post "solutions/save"
+  get "solutions/solve/:id" => "solutions#solve"
+  resources :solutions
 
   devise_for :users
-  
   resources :users
 
-  root :to => 'practic#index'
+  root :to => 'practices#solve'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

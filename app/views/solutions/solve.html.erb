@@ -1,0 +1,63 @@
+<p>
+  <b>Ejercicio:</b>
+
+  <%= @exercise.name %>
+  <br>
+    
+  <%= raw(@exercise.content.to_s.gsub(/\n/, '<br/>')) %> <br>
+</p>
+<p>
+  <b>Puntos:</b>
+  <p class="well"><strong>
+  <%= @solution.points %>
+  </strong>
+  </p>
+</p>
+
+<p>
+  <b>Resultado:</b>
+  <div class="well">
+
+  <p class="text-info">
+  <%=
+  raw(@solution.result.to_s.gsub(/\n/, '<br/>'))
+  %>
+  </p>
+  </div>
+</p>
+<p>
+  <b>Comentarios:</b>
+  <div class="well">
+  <p class="text-info">
+  <% @comments_solutions.each do |comment|%>
+  <%= comment.comment %> <br>
+  <% end %>
+  </p>
+  </div>
+</p>
+  <%= form_tag({:controller => "solutions",:action => :save}, :multipart => true) do |f| %>
+    <% if @solution.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this submission from being saved:</h2>
+  
+        <ul>
+        <% @solution.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= hidden_field_tag('solution[id]', @solution.id) %>
+    <%= hidden_field_tag('solution[exercise_id]', @exercise.id) %>
+    <%= hidden_field_tag('solution[user_id]', @current_user.id) %>
+    <div class="field">
+      <b>Archivo: </b> <br>
+      <%= file_field_tag 'solution[file]', :text=>'Subir archivo' %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= submit_tag 'Submit' , :class=>'btn btn-primary btn-large' %>
+    </div>
+  <% end %>
+<%= link_to raw('<i class="icon-backward"></i> Back'), '/exercises/solve/'+@exercise.practice_id.to_s, :class=> 'btn'  %>
+

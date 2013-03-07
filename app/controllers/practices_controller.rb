@@ -83,4 +83,16 @@ class PracticesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def solve
+    @practices = Practice.find(:all,
+                              :joins =>
+                              "LEFT JOIN exercises ON exercises.practice_id = practices.id" +
+                              " LEFT JOIN solutions ON solutions.exercise_id = exercises.id and solutions.user_id = " +
+                              current_user.id.to_s,
+                              :select => "practices.*, sum(solutions.points) AS points",
+                              :group => "practices.id"
+                              )
+                               
+  end
 end

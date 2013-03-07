@@ -1,0 +1,22 @@
+<h2>Ejercicios</h2><br>
+<table class="table table-striped">
+  <tr>
+  <th>
+    Ejercicio
+  </th>
+  <th>
+    Puntos
+  </th>
+  <th>
+    
+  </th>
+  </tr>
+<% @exercises.each do |exercise| %>
+  <tr>
+    <td><%= exercise.name %></td>
+    <td><%= exercise.points %></td>
+    <td><%= link_to 'Resolver', '/solutions/solve/'+exercise.id.to_s %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to raw('<i class="icon-backward"></i> Back'), practices_solve_path, :class=> 'btn'  %>
