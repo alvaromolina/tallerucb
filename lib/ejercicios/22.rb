@@ -21,5 +21,7 @@ describe "cambio" do
   it "Debe retornar el cambio para casos de monedas inventadas [50 points]" do
     monedas = [10, 7, 1]
     cambio(14,monedas).should == [7,7]
+    monedas = [10, 7, 1]
+    cambio(14,monedas).should == [7,7]
   end
 end
