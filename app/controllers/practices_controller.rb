@@ -1,5 +1,5 @@
 class PracticesController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   # GET /practices
   # GET /practices.json
