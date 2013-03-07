@@ -90,10 +90,10 @@ class SolutionsController < ApplicationController
   
   
   
-  def grade(exercise_num, solutions_id, solutions_file_file_name)
+  def grade(practices_num, exercise_num, solutions_id, solutions_file_file_name)
       root_dir = Rails.root.to_s
       Dir.chdir(root_dir+"/lib/rag/")
-      spec = '../ejercicios/'+exercise_num.to_s+'.rb'
+      spec = '../ejercicios/'+practices_num.to_s+exercise_num.to_s+'.rb'
       sub = root_dir+'/public/assets/solutions/'+solutions_id.to_s+'/original/'+solutions_file_file_name
       output = `ruby grade #{sub} #{spec}`
       score, comments = parse_grade(output)
@@ -104,34 +104,42 @@ class SolutionsController < ApplicationController
   
   def save
     @exercise = Exercise.find(params[:solution][:exercise_id])
-    if (params[:solution][:id]!="")
-      @solution = Solution.find(params[:solution][:id])
-      
-      if @solution.update_attributes(params[:solution])
-        
-        params[:solution][:result], params[:solution][:points] = grade(@exercise.number, @solution.id, @solution.file_file_name)
+    @practice = Practice.find(@exercise.practice_id)
+    
+    #TODO: Arreglar esta vaina
+    puts Time.zone.now
+    puts @practice.due_date
+    if(Time.zone.now <= @practice.due_date)
+      if (params[:solution][:id]!="")
+        @solution = Solution.find(params[:solution][:id])
         if @solution.update_attributes(params[:solution])
-          flash[:notice] = 'Solution was successfully updated.'
-          redirect_to :action => "solve", :id => @solution.exercise_id
+          params[:solution][:result], params[:solution][:points] = grade(@practice.number,@exercise.number, @solution.id, @solution.file_file_name)
+          if @solution.update_attributes(params[:solution])
+            flash[:notice] = 'Solution was successfully updated.'
+            redirect_to :action => "solve", :id => @solution.exercise_id
+          else
+            render action: "solve"
+          end
         else
           render action: "solve"
         end
       else
-        render action: "solve"
+        @solution = Solution.new(params[:solution])
+        if (@solution.save)
+          @solution.result, @solution.points = grade(@practice.number,@exercise.number, @solution.id, @solution.file_file_name)
+          if (@solution.save)
+            flash[:notice] = 'Solution was successfully created.'
+            redirect_to :action => "solve", :id => @solution.exercise_id
+          else
+            render action: "solve"
+          end
+        else
+          render action: "solve"
+        end
       end
     else
-      @solution = Solution.new(params[:solution])
-      if (@solution.save)
-        @solution.result, @solution.points = grade(@exercise.number, @solution.id, @solution.file_file_name)
-        if (@solution.save)
-          flash[:notice] = 'Solution was successfully created.'
-          redirect_to :action => "solve", :id => @solution.exercise_id
-        else
-          render action: "solve"
-        end
-      else
-        render action: "solve"
-      end
+      flash[:notice] = 'Tiempo expiro para subir soluciones'
+      redirect_to :action => "solve", :id => @exercise.id
     end
     
     

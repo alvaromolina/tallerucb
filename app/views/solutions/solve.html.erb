@@ -56,7 +56,7 @@
     </div>
     <br>
     <div class="actions">
-      <%= submit_tag 'Submit' , :class=>'btn btn-primary btn-large' %>
+      <%= submit_tag 'Submit' , :class=>'btn btn-primary btn-large', :disable_with=> 'Submitting...'  %>
     </div>
   <% end %>
 <%= link_to raw('<i class="icon-backward"></i> Back'), '/exercises/solve/'+@exercise.practice_id.to_s, :class=> 'btn'  %>

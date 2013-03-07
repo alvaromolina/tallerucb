@@ -10,6 +10,7 @@ def contar_palabras(frase)
   arr
 end
 =begin
+#solucion para no contar caracteres especiales
 def contar_palabras(frase)
   arr = {}
   frase.downcase.scan(/\w+/).each do |s|
