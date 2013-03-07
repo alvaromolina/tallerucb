@@ -27,7 +27,7 @@ class PracticesController < ApplicationController
   # GET /practices/new.json
   def new
     @practice = Practice.new
-    7.times do
+    8.times do
       question = @practice.exercises.build
     end
     
