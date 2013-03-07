@@ -29,14 +29,15 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
     def initialize(user)
-      user ||= User.new # guest user (not logged in)
-      if user.admin?
-        can :manage, User
-        can :manage, Practice
-        can [:report, :report2, :index, :save, :show, :solve, :parse_grade, :grade], :practic
-      else
-        can [:index, :save, :show, :solve, :parse_grade, :grade], :practic
-      end
+      #user ||= User.new # guest user (not logged in)
+      #if user.admin?
+      #  can :manage, User
+      #  can :manage, Practice
+      #  can [:report, :report2, :index, :save, :show, :solve, :parse_grade, :grade], :practic
+      #else
+      #  can [:index, :save, :show, :solve, :parse_grade, :grade], :practic,
+      #  can :manage, S
+      #end
     end
   end
 end
