@@ -26,7 +26,7 @@ describe Post, "#contar_palabras" do
   it "La funcion contar_palabras debe devolver el numero de palabras en title, body y comment [40 points]" do
     post = Post.new("titulo","body","comment")
     post.contar_palabras.should == 3
-    post = Post.new("titulo","body","comment")
-    post.contar_palabras.should == 3
+    post = Post.new("titulo 2 3","body 4 6 6","comment ss")
+    post.contar_palabras.should == 9
   end
 end
