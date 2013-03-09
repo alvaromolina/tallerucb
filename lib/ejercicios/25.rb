@@ -77,7 +77,6 @@ describe "multiple history_accessor" do
     cs188.year = 2010
     cs188.year = 2011
     cs188.year = 2012
-
     cs169.instructor_history[0].should == nil
     cs169.instructor_history[1].should == "Armando Fox"
     cs188.instructor_history[0].should == nil
