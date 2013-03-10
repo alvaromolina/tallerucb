@@ -175,9 +175,17 @@ class SolutionsController < ApplicationController
   
   
   def report
+    if(params[:practice_number])
+      condition = 'practices.number = '+ params[:practice_number]
+    else
+      condtion = ''
+    end
     @users = User.find(:all,
-                       :joins =>"LEFT JOIN solutions ON solutions.user_id = users.id",
-                       :select => "users.*, count( solutions.exercise_id) sol, sum(solutions.points) points ",
+                       :joins =>"LEFT JOIN solutions ON solutions.user_id = users.id " +
+                       " LEFT JOIN exercises ON exercises.id = solutions.exercise_id " +
+                       " LEFT JOIN practices ON practices.id = exercises.practice_id ",
+                       :select => "users.*, practices.number as practice, count( solutions.exercise_id) sol, sum(solutions.points) points ",
+                       :conditions => condition,
                        :order => "points desc, users.name",
                        :group => 'users.id')
   end
@@ -185,14 +193,15 @@ class SolutionsController < ApplicationController
   def report2
     
     if(params[:user_id])
-      condition = 'users.id = '+ params[:user_id].to_s
+      condition = 'users.id = '+ params[:user_id].to_s + ' and practices.number = ' +  params[:practice_number]
     else
       condtion = ''
     end
     @users = User.find(:all,
                        :joins =>"LEFT JOIN solutions ON solutions.user_id = users.id "+
-                       "LEFT JOIN exercises ON exercises.id = solutions.exercise_id",
-                       :select => "users.*, solutions.points, solutions.id AS solutions_id, solutions.file_file_name, solutions.result, exercises.number, exercises.name AS exercise_name ",
+                       "LEFT JOIN exercises ON exercises.id = solutions.exercise_id "+
+                       " LEFT JOIN practices ON practices.id = exercises.practice_id ",
+                       :select => "users.*, practices.number as practice, solutions.points, solutions.id AS solutions_id, solutions.file_file_name, solutions.result, exercises.number, exercises.name AS exercise_name ",
                        :conditions => condition,
                        :order => "users.name, exercises.number")
   end

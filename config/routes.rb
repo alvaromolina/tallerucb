@@ -10,9 +10,12 @@ Tallerucb::Application.routes.draw do
   get "exercises/solve/:id" => "exercises#solve"
   resources :exercises
 
-  get "solutions/report"
+  get "solutions/report" => "solutions#report"
+  get "solutions/report/:practice_number" => "solutions#report"
   get "solutions/report2"
   get "solutions/report2/:user_id" => "solutions#report2"
+  get "solutions/report2/:user_id/:practice_number" => "solutions#report2"
+
   post "solutions/save"
   get "solutions/solve/:id" => "solutions#solve"
   resources :solutions

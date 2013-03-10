@@ -8,6 +8,7 @@
 %>
 <table class="table table-striped">
   <tr>
+    <th>Practica</th>
     <th>Usuario</th>
     <th>Email</th>
     <th>Soluciones</th>
@@ -17,11 +18,12 @@
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= user.practice %></td>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
     <td><%= user.sol %></td>
     <td><%= user.points %></td>
-    <td> <%= link_to 'detalle', '/solutions/report2/'+user.id.to_s %></td>
+    <td> <%= link_to 'detalle', '/solutions/report2/'+user.id.to_s+'/'+user.practice.to_s %></td>
   </tr>
 <% end %>
 </table>

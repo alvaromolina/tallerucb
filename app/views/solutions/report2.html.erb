@@ -4,6 +4,7 @@
 
 <table class="table table-striped">
   <tr>
+    <th>Practica</th>
     <th>Usuario</th>
     <th>Email</th>
     <th>Ejercicio</th>
@@ -16,6 +17,7 @@
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= user.practice %></td>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
     <td><%= user.exercise_name %></td>
