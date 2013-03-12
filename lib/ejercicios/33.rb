@@ -10,7 +10,7 @@ describe Post, "#length" do
 end
 
 describe Post, "#split" do
-  it "La funcion length debe devolver el body.split[20 points]" do
+  it "La funcion split debe devolver el body.split[20 points]" do
     post = Post.new("titulo","body mas",Comment.new("comment"))
     post.split.should == ["body","mas"]
     post = Post.new("titulo 2 3","body,4,6,6,ddd,dddwwww",Comment.new("comment ss"))

@@ -1,5 +1,5 @@
 class PracticesController < ApplicationController
-  #load_and_authorize_resource
+  load_and_authorize_resource
 
   # GET /practices
   # GET /practices.json
@@ -35,11 +35,15 @@ class PracticesController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @practice }
     end
+
   end
 
   # GET /practices/1/edit
   def edit
     @practice = Practice.find(params[:id])
+    2.times do
+      question = @practice.exercises.build
+    end
   end
 
   # POST /practices
