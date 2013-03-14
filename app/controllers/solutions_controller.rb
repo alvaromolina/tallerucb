@@ -187,7 +187,7 @@ class SolutionsController < ApplicationController
                        " LEFT JOIN practices ON practices.id = exercises.practice_id ",
                        :select => "users.*, practices.number as practice, count( solutions.exercise_id) sol, sum(solutions.points) points ",
                        :conditions => condition,
-                       :order => "points desc, users.name",
+                       :order => "users.email, points desc, users.name",
                        :group => 'users.id')
   end
   
