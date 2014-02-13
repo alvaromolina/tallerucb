@@ -10,16 +10,16 @@ gem 'puma'
 
 
 
-#gem 'debugger'
+gem 'debugger'
 gem 'sqlite3'
 gem 'devise'
 gem "paperclip", "~> 3.0"
 gem 'rspec'
-#gem 'metric_fu'
-#gem 'mechanize'
-#gem 'term-ansicolor'
+gem 'metric_fu'
+gem 'mechanize'
+gem 'term-ansicolor'
 gem 'twitter-bootstrap-rails'
-#gem 'ZenTest'
+gem 'ZenTest'
 gem "cancan"
 
 
