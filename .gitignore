@@ -25,3 +25,4 @@ pickle-email-*.html
 /lib/rag/
 /lib/rag/*
 *.komodoprojectx
+Gemfile.lock
