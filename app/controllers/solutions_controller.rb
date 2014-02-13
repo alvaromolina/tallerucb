@@ -114,7 +114,7 @@ class SolutionsController < ApplicationController
           params[:solution][:result], params[:solution][:points] = grade(@practice.number,@exercise.number, @solution.id, @solution.file_file_name)
           if @solution.update_attributes(params[:solution])
             flash[:notice] = 'Solution was successfully updated.'
-            redirect_to :action => "solve", :id => @solution.exercise_id
+            redirect_to :action => "solve", :excercise_id => @solution.exercise_id
           else
             render action: "solve"
           end
