@@ -59,16 +59,13 @@ class SolutionsController < ApplicationController
 
   def solve
     @current_user = current_user
-    @solution = Solution.find(:first,
-                              :conditions => ['exercise_id = ? and user_id = ?', params[:id],current_user.id]
-                            )
+    @solution = Solution.where('exercise_id = ? and user_id = ?', params[:id],current_user.id).first
     unless @solution
       @solution = Solution.new
     end
     @exercise = Exercise.find(params[:id])
     
-    @comments_solutions = CommentsSolution.find(:all,
-                                                 :conditions => ['solution_id = ?', @solution.id] )
+    @comments_solutions = CommentsSolution.where('solution_id = ?', @solution.id)
   end
 
   def parse_grade(str)
