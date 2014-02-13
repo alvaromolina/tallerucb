@@ -1,20 +1,23 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'debugger'
+
+
+
+#gem 'debugger'
 gem 'sqlite3'
 gem 'devise'
 gem "paperclip", "~> 3.0"
 gem 'rspec'
-gem 'metric_fu'
-gem 'mechanize'
-gem 'term-ansicolor'
+#gem 'metric_fu'
+#gem 'mechanize'
+#gem 'term-ansicolor'
 gem 'twitter-bootstrap-rails'
-gem 'ZenTest'
+#gem 'ZenTest'
 gem "cancan"
 
 
