@@ -21,6 +21,7 @@ gem 'term-ansicolor'
 gem 'twitter-bootstrap-rails'
 gem 'ZenTest'
 gem "cancan"
+gem 'therubyracer'
 
 
 # Gems used only for assets and not required
