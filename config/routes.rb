@@ -17,7 +17,7 @@ Tallerucb::Application.routes.draw do
   get "solutions/report2/:user_id/:practice_number" => "solutions#report2"
 
   post "solutions/save"
-  get "solutions/solve/:id" => "solutions#solve"
+  get "solutions/solve/:excercise_id" => "solutions#solve"
   resources :solutions
 
   devise_for :users

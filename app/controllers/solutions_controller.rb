@@ -59,11 +59,11 @@ class SolutionsController < ApplicationController
 
   def solve
     @current_user = current_user
-    @solution = Solution.where('exercise_id = ? and user_id = ?', params[:id],current_user.id).first
+    @solution = Solution.where('exercise_id = ? and user_id = ?', params[:excercise_id],current_user.id).first
     unless @solution
       @solution = Solution.new
     end
-    @exercise = Exercise.find(params[:id])
+    @exercise = Exercise.find(params[:excercise_id])
     
     @comments_solutions = CommentsSolution.where('solution_id = ?', @solution.id)
   end
