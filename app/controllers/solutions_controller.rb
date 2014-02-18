@@ -127,7 +127,7 @@ class SolutionsController < ApplicationController
           @solution.result, @solution.points = grade(@practice.number,@exercise.number, @solution.id, @solution.file_file_name)
           if (@solution.save)
             flash[:notice] = 'Solution was successfully created.'
-            redirect_to :action => "solve", :id => @solution.exercise_id
+            redirect_to :action => "solve", :excercise_id => @solution.exercise_id
           else
             render action: "solve"
           end
@@ -137,7 +137,7 @@ class SolutionsController < ApplicationController
       end
     else
       flash[:notice] = 'Tiempo expiro para subir soluciones'
-      redirect_to :action => "solve", :id => @exercise.id
+      redirect_to :action => "solve", :excercise_id => @exercise.id
     end
     
     
