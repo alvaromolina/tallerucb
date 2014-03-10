@@ -1,39 +1,21 @@
-describe "cambio" do  
+describe "in" do  
   
-  it "Debe retornar el cambio para casos de moneda boliviana [10 points]" do
-    monedas = [10,20,50]
-    cambio(40,monedas).should == [20,20]
-    cambio(50,monedas).should == [50]
-    cambio(3,monedas).should == []
-    cambio(10,monedas).should == [10]
-    cambio(20,monedas).should == [20]
-    cambio(80,monedas).should == [50,20,10]
-    cambio(90,monedas).should == [50,20,20]
-    cambio(95,monedas).should == [50,20,20]
+  it "Debe transformar correctamente los valores de las monedas euros, dolars , yens y bolivians [75 points]" do
+
+    2.dollars.in(:euros).should == 1.521311475409836
+    2.dollars.in(:bolivians).should == 13.92
+    10.euros.in(:dollars).should == 13.14655172413793
+    15.yens.in(:euros).should == 0.11967213114754098
+    20.euros.in(:yens).should == 2506.8493150684935
+    1.in(:dollars).should == 0.14367816091954022
   end
 
-  it "Debe retornar el cambio para casos de moneda de otros paises [40 points]" do
-    monedas = [25, 10, 5, 1]
-    cambio(39,monedas).should == [25, 10, 1, 1, 1, 1]
-    cambio(50,monedas).should == [25,25]
-    cambio(3,monedas).should == [1,1,1]
-    
-    monedas = [25,10,20,5,1]
-    cambio(39,monedas).should == [25, 10, 1, 1, 1, 1]
-    cambio(22,monedas).should == [20, 1, 1]
-    cambio(21,monedas).should == [20, 1]
-    cambio(47,monedas).should == [25, 20, 1, 1]
-    
+  it "Debe transformar correctamente los valores para valores singulares euro, dolar, yen y bolivian [25 points]" do
+    1.dollar.in(:dollars).should == 1.00
+    1.euro.in(:euro).should == 1.00
+    1.yen.in(:yen).should == 1.00
+    1.bolivian.in(:bolivian).should == 1.00
   end
   
-  it "Debe retornar el cambio para casos de monedas inventadas [50 points]" do
-    monedas = [10, 7, 1]
-    cambio(14,monedas).should == [7,7]
-    cambio(15,monedas).should == [7,7,1]
-    cambio(39,monedas).should == [10, 10, 10, 7, 1, 1]
-    cambio(22,monedas).should == [10, 10, 1, 1]
-    cambio(21,monedas).should == [10, 10, 1]
-    cambio(47,monedas).should == [10, 10, 10, 10, 7]
-
-  end
+  
 end
