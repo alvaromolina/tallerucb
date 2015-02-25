@@ -20,6 +20,5 @@ describe "juego_rpt" do
     juego_rpt([ ["David", "T"], ["Omer", "T"] ])[0].should == "David"
     juego_rpt([ ["Dave", "R"], ["Armando", "R"] ])[0].should == "Dave"
   end
-end
 
 end
