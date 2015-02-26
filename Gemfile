@@ -21,7 +21,7 @@ gem 'term-ansicolor'
 gem 'twitter-bootstrap-rails'
 gem 'ZenTest'
 gem "cancan"
-gem 'therubyracer'
+gem 'therubyracer', "~> 0.12.1"
 
 
 # Gems used only for assets and not required
