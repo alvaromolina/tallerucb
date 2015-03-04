@@ -1,57 +1,21 @@
-# 30% of total
-describe User do
-  it "Debe funcionar el constructor [5 points]" do
-    user = User.new("usuario","email")
-    user = User.new
+describe "in" do  
+  
+  it "Debe transformar correctamente los valores de las monedas euros, dolars , yens y bolivians [75 points]" do
+
+    2.dollars.in(:euros).should == 1.521311475409836
+    2.dollars.in(:bolivians).should == 13.92
+    10.euros.in(:dollars).should == 13.14655172413793
+    15.yens.in(:euros).should == 0.11967213114754098
+    20.euros.in(:yens).should == 2506.8493150684935
+    1.in(:dollars).should == 0.14367816091954022
   end
-  it "Deben funcionar los accessors  [5 points]" do
-    user = User.new("usuario","email")
-    user.name = "user"
-    user.email = "emai"
-    user.name.should == "user"
-    user.email.should == "emai"
+
+  it "Debe transformar correctamente los valores para valores singulares euro, dolar, yen y bolivian [25 points]" do
+    1.dollar.in(:dollars).should == 1.00
+    1.euro.in(:euro).should == 1.00
+    1.yen.in(:yen).should == 1.00
+    1.bolivian.in(:bolivian).should == 1.00
   end
   
-end
-
-describe Post, "#user" do
-  it "Se debe aumentar el atributo user a Post [10 points]" do
-    post = Post.new("titulo","body",Comment.new("comment"), User.new("usuario","email"))
-    post.user.name.should == "usuario"
-    post.user = User.new("us","email")
-    post.user.name.should == "us"
-  end
-end
-
-
-describe Post, "#user_name" do
-  it "Se debe aumentar el metodo user_name a Post [10 points]" do
-    post = Post.new("titulo","body",Comment.new("comment"), User.new("usuario","email"))
-    post.user_name.should == "usuario"
-  end
-end
-
-describe Comment do
-
-  it "Debe funcionar el constructor [5 points]" do
-    comment = Comment.new("comm",User.new)
-    comment = Comment.new
-  end
-  it "Deben funcionar los accessors  [5 points]" do
-    comment = Comment.new("comm",User.new)
-    comment.comment = "c"
-    comment.user = User.new("user","mail")
-    comment.user.name.should == "user"
-    comment.comment.should == "c"
-  end
   
-end
-
-describe Post, "#contar_palabras" do
-  it "La funcion contar_palabras debe devolver el numero de palabras en title, body y comment [40 points]" do
-    post = Post.new("titulo","body",Comment.new("comment"))
-    post.contar_palabras.should == 3
-    post = Post.new("titulo 2 3","body 4 6 6 ddd dddwwww",Comment.new("comment ss"))
-    post.contar_palabras.should == 11
-  end
 end
