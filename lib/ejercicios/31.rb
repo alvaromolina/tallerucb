@@ -6,7 +6,7 @@ describe "in" do
     2.dollars.in(:bolivians).should == 13.92
     10.euros.in(:dollars).should == 13.14655172413793
     15.yens.in(:euros).should == 0.12295081967213115
-    20.euros.in(:yens).should == 2442.6666666666665
+    20.euros.in(:yens).should == 2440
     1.in(:dollars).should == 0.14367816091954022
   end
 
