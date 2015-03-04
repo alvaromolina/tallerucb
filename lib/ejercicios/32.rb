@@ -1,7 +1,7 @@
 describe "add_currency" do
 
   it "Debe recibir correctamente nuevos valores [100 points]" do
-    Numeric.add_currency(:mx_pesos,0.12)
+    Numeric.add_currency(:mx_peso,0.12)
     2.mx_pesos.should == 0.24
     1.mx_peso.should == 0.12
     10.34.mx_pesos.should == 1.2408
