@@ -8,7 +8,7 @@ describe "add_currency" do
     Numeric.add_currency(:bolivar,0.1822)
     2.bolivars.should == 0.3644
     1.bolivar.should == 0.3644
-    10.34.mx_pesos.should == 1.883948
+    10.34.bolivar.should == 1.883948
   end
 
 end
