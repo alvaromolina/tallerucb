@@ -5,8 +5,8 @@ describe "in" do
     2.dollars.in(:euros).should == 1.521311475409836
     2.dollars.in(:bolivians).should == 13.92
     10.euros.in(:dollars).should == 13.14655172413793
-    15.yens.in(:euros).should == 0.11967213114754098
-    20.euros.in(:yens).should == 2506.8493150684935
+    15.yens.in(:euros).should == 0.12295081967213115
+    20.euros.in(:yens).should == 2442.6666666666665
     1.in(:dollars).should == 0.14367816091954022
   end
 
